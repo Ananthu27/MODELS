@@ -1,5 +1,4 @@
 from random import uniform
-from dataset import  forKMeans
 import sys
 import numpy as np
 
@@ -7,7 +6,7 @@ from general import eulidianDistance
 FLOAT_MAX = sys.float_info.max
 
 ### K MEANS IMPLEMENTATION
-def kMeans(k,df,columns,EPOC=10):
+def kMeans(k,df,columns,EPOC=20):
 
     min_max = {}
     for column in columns:
@@ -50,20 +49,3 @@ def calcClusterCenters(df,columns):
         temp = df[df.cluster==clusters[i]].head()
         cluster_centers.append([temp.x.mean(),temp.y.mean()])
     return cluster_centers
-
-# df = forKMeans()
-# columns = df.columns
-# cc,df = kMeans(3,df,columns,100)
-
-# import matplotlib.pyplot as plt
-
-# colors=["#DDDDFF", "#DDFFDD", "#FFDDDD"]
-
-# for index,row in df.iterrows():
-#     plt.scatter(x=row['x'],y=row['y'],color=colors[row['cluster']])
-
-# import pandas as pd
-# ccdf = pd.DataFrame(cc,columns=columns)
-
-# plt.scatter(x=ccdf['x'],y=ccdf['y'],color=["#000000" for i in range(len(ccdf['x']))])
-# plt.show()
